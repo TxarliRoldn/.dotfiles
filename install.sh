@@ -23,5 +23,8 @@ echo '' $SHELL >PREFIX_LOCATION=$HOME/Programs/micromamba < <(curl -L micro.mamb
 git clone https://github.com/LazyVim/starter ~/.config/nvim
 rm -rf ~/.config/nvim/.git
 
+# Create all links
+stow .
+
 # Change shell
 chsh -s /usr/bin/zsh
