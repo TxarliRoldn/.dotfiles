@@ -1,0 +1,19 @@
+import = ["/home/carlos/.config/alacritty/alacritty-theme/themes/THEME.toml"]
+
+[font]
+size = 14
+
+[font.normal]
+family = "MesloLGS NF"
+
+#[font.bold]
+#family = "UbuntuMono Nerd Font"
+#style = "Regular"
+#
+#[font.italic]
+#family = "UbuntuMono Nerd Font"
+#style = "Regular"
+#
+#[font.normal]
+#family = "UbuntuMono Nerd Font"
+#style = "Regular"
