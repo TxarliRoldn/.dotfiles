@@ -22,7 +22,7 @@ git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
 
 ## micromamba
 mkdir $HOME/Programs
-echo '' $SHELL <(curl -L micro.mamba.pm/install.sh) >PREFIX_LOCATION=$HOME/Programs/micromamba
+echo '' | PREFIX_LOCATION=$HOME/Programs/micromamba $SHELL <(curl -L micro.mamba.pm/install.sh)
 
 ## neovim
 git clone https://github.com/LazyVim/starter ~/.config/nvim
