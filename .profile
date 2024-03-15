@@ -10,20 +10,20 @@
 
 # if running bash
 if [ -n "$BASH_VERSION" ]; then
-    # include .bashrc if it exists
-    if [ -f "$HOME/.bashrc" ]; then
-	. "$HOME/.bashrc"
-    fi
+	# include .bashrc if it exists
+	if [ -f "$HOME/.bashrc" ]; then
+		. "$HOME/.bashrc"
+	fi
 fi
 
 # set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
+if [ -d "$HOME/bin" ]; then
+	PATH="$HOME/bin:$PATH"
 fi
 
 # set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
+if [ -d "$HOME/.local/bin" ]; then
+	PATH="$HOME/.local/bin:$PATH"
 fi
 
 # Aliases
@@ -64,11 +64,10 @@ alias lp='eza -1'
 
 alias conda=micromamba
 
-
-function at() {
-	sed "s/THEME/$1/g" $HOME/.config/alacritty/base.yml > $HOME/.config/alacritty/alacritty.yml
+function alacritty_theme() {
+	sed -i "1c\import = [\"~/.config/alacritty/themes/themes/$1.toml\"]" ~/.dotfiles/.config/alacritty/alacritty.toml
 }
 
 function uam() {
-	alacritty -e bash -c 'ssh uam' &> /dev/null &
+	alacritty -e bash -c 'ssh uam' &>/dev/null &
 }

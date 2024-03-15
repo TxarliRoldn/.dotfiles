@@ -1,5 +1,5 @@
 # Install requirements
-which dnf &>/dev/null && sudo dnf install git stow zsh tmux fzf curl wget neovim
+which dnf &>/dev/null && sudo dnf install git stow zsh tmux fzf curl wget alacritty neovim
 
 ## zsh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
@@ -12,12 +12,17 @@ wget -P $HOME/.local/share/fonts https://github.com/romkatv/powerlevel10k-media/
 wget -P $HOME/.local/share/fonts https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Bold%20Italic.ttf
 fc-cache -v
 
+## alacritty
+mkdir -p ~/.config/alacritty/themes
+git clone https://github.com/alacritty/alacritty-theme ~/.config/alacritty/themes
+
 ## tmux
-git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+mkdir -p ~/.config/tmux/plugins/tpm
+git clone https://github.com/tmux-plugins/tpm ~/.config/tmux/plugins/tpm
 
 ## micromamba
 mkdir $HOME/Programs
-echo '' $SHELL >PREFIX_LOCATION=$HOME/Programs/micromamba < <(curl -L micro.mamba.pm/install.sh)
+echo '' $SHELL <(curl -L micro.mamba.pm/install.sh) >PREFIX_LOCATION=$HOME/Programs/micromamba
 
 ## neovim
 git clone https://github.com/LazyVim/starter ~/.config/nvim
