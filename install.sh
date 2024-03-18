@@ -27,6 +27,8 @@ echo '' | PREFIX_LOCATION=$HOME/Programs/micromamba $SHELL <(curl -L micro.mamba
 ## neovim
 git clone https://github.com/LazyVim/starter ~/.config/nvim
 rm -rf ~/.config/nvim/.git
+rm ~/.config/nvim/lua/config/keymaps.lua
+rm ~/.config/nvim/lua/config/options.lua
 
 # Create all links
 stow .
