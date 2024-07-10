@@ -1,4 +1,4 @@
-import = ["/home/carlos/.config/alacritty/themes/themes/catppuccin_mocha.toml"]
+import = ["/home/carlos/.config/alacritty/themes/catppuccin_mocha.toml"]
 
 [env]
 TERM = "xterm-256color"
