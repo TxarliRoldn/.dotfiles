@@ -3,17 +3,8 @@ if [ -d "$HOME/.local/bin" ]; then
     export PATH="$HOME/.local/bin:$PATH"
 fi
 
-# Set the directory we want to store zinit and plugins
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-
-# Download Zinit, if it's not there yet
-if [ ! -d "$ZINIT_HOME" ]; then
-   mkdir -p "$(dirname $ZINIT_HOME)"
-   git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
-fi
-
 # Source/Load zinit
-source "${ZINIT_HOME}/zinit.zsh"
+source "${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git/zinit.zsh"
 
 # Add in zsh plugins
 zinit light zsh-users/zsh-syntax-highlighting
@@ -22,6 +13,7 @@ zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 
 # Add in snippets
+zinit snippet OMZL::key-bindings.zsh
 zinit snippet OMZP::git
 zinit snippet OMZP::sudo
 zinit snippet OMZP::archlinux
@@ -29,7 +21,6 @@ zinit snippet OMZP::command-not-found
 
 # Load completions
 autoload -Uz compinit && compinit
-
 zinit cdreplay -q
 
 # Tmux
@@ -39,13 +30,6 @@ fi
 
 # Oh My Posh
 eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/m365princess.omp.json)"
-
-# Keybindings
-bindkey -e
-bindkey '^p' history-search-backward
-bindkey '^n' history-search-forward
-bindkey '^[w' kill-region
-bindkey '\e[3~' delete-char
 
 # History
 HISTSIZE=5000
@@ -105,7 +89,5 @@ function uam() {
 }
 
 # Shell integrations
-source $HOME/.fzf/shell/completion.zsh
-source $HOME/.fzf/shell/key-bindings.zsh
-#source <(fzf --zsh)
+source <(fzf --zsh)
 eval "$(zoxide init --cmd cd zsh)"

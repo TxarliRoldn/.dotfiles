@@ -8,35 +8,55 @@
     "blush": "#DA627D",
     "salmon": "#FCA17D",
     "sky": "#86BBD8",
-    "teal_blue": "#33658A"
+    "teal_blue": "#33658A",
+    "python": "#23B46F"
   },
   "blocks": [
     {
       "alignment": "left",
       "segments": [
         {
-          "type": "text",
-          "style": "diamond",
-          "leading_diamond": "\ue0b6",
-          "foreground": "p:white",
-          "background": "p:tan",
-          "template": "{{ if .Env.PNPPSHOST }} \uf8c5 {{ .Env.PNPPSHOST }} {{ end }}"
-        },
-        {
-          "type": "text",
+          "type": "python",
           "style": "powerline",
+          "invert_powerline": true,
+          "powerline_symbol": "\ue0b2",
+          "background": "p:python",
           "foreground": "p:white",
-          "background": "p:teal",
-          "powerline_symbol": "\ue0b0",
-          "template": "{{ if .Env.PNPPSSITE }} \uf2dd {{ .Env.PNPPSSITE }}{{ end }}"
+          "template": " \ue235 {{ .Full }} {{ if .Venv }}{{ .Venv }}{{ end }} ",
+          "properties": {
+            "fetch_virtual_env": true
+          }
         },
         {
-          "type": "text",
-          "style": "diamond",
-          "trailing_diamond": "\ue0b4",
+          "type": "julia",
+          "style": "powerline",
+          "invert_powerline": true,
+          "powerline_symbol": "\ue0b2",
+          "background": "p:blush",
           "foreground": "p:white",
-          "background": "p:teal",
-          "template": "{{ if .Env.PNPPSSITE }}\u00A0{{ end }}"
+          "template": " \ue624 {{ .Full }} "
+        },
+        {
+          "type": "executiontime",
+          "style": "powerline",
+          "invert_powerline": true,
+          "powerline_symbol": "\ue0b2",
+          "background": "p:blush",
+          "foreground": "p:white",
+          "template": " {{ .FormattedMs }} \uf252 "
+        },
+        {
+          "type": "status",
+          "background": "p:plum",
+          "foreground": "p:white",
+          "leading_diamond": "\ue0b2",
+          "trailing_diamond": "\ue0b4",
+          "invert_powerline": true,
+          "style": "diamond",
+          "properties": {
+            "always_enabled": true
+          },
+          "template": " {{ if gt .Code 0 }}{{ reason .Code }}{{ else }} \uf42e {{ end }}"
         }
       ],
       "type": "rprompt"
@@ -57,10 +77,10 @@
           "foreground": "p:white",
           "powerline_symbol": "\ue0b0",
           "properties": {
-            "style": "folder"
+            "style": "full"
           },
           "style": "powerline",
-          "template": " {{ .Path }} ",
+          "template": " \uf07b {{ .Path }} ",
           "type": "path"
         },
         {

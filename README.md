@@ -5,4 +5,4 @@ To install in a new system do
 ```bash
 bash install.sh
 ```
-Currently only Fedora supported
+Currently only Fedora and Arch supported
